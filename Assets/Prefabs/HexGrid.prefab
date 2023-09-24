@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8468143145304650768}
   - component: {fileID: 7485618382945901494}
   - component: {fileID: 7913732113373723315}
+  - component: {fileID: 1821065081}
   m_Layer: 0
   m_Name: HexGrid
   m_TagString: Untagged
@@ -97,3 +98,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 76f0bd2652afc7c41a55647a42ea2f23, type: 2}
+  innerSize: 1
+  outerSize: 0.8
+  height: 0.5
+  isReverse: 0
+  isFlatTop: 1
+--- !u!64 &1821065081
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616834092372197710}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
