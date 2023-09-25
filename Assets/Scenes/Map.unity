@@ -1364,10 +1364,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapEditor
       objectReference: {fileID: 0}
-    - target: {fileID: 3650999086720775549, guid: f6b89a9832a15694bbeb632dff83fdfa, type: 3}
-      propertyPath: gridGroupSize
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 3650999086720775550, guid: f6b89a9832a15694bbeb632dff83fdfa, type: 3}
       propertyPath: m_RootOrder
       value: 3
