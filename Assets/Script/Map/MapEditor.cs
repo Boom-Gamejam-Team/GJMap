@@ -1,18 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapEditor : MonoBehaviour
 {
+
+    [Header("Grid prefabs")]
     public GameObject gridObj;
     public GameObject gridDummyObj;
     public GameObject gridDummySelectedObj;
     public Transform gridParent;
 
+    [Header("Editor options")]
     public bool isEditorEnabled;
     public int gridGroupSize = 3;
+    public LayerMask rayLayerMask;
 
+    [HideInInspector]
     public List<Grid> gridList;
+
+    //UI
+    [Header("UI")]
+    public RectTransform panel;
+    public Text idTxt;
+    public Text posTxt;
+    public Dropdown typeDropdown;
 
     private Grid currentSelectedGrid;
     private GameObject gridDummyObjInstance;
@@ -34,7 +47,7 @@ public class MapEditor : MonoBehaviour
     {
         if (isEditorEnabled)
         {
-            SelectGrid();
+            GridSelection();
         }
     }
 
@@ -65,11 +78,16 @@ public class MapEditor : MonoBehaviour
         }
     }
 
-    void SelectGrid()
+    void GridSelection()
     {
+        if (Input.mousePosition.x > Screen.width - 2 * (Screen.width - panel.position.x) &&
+            Input.mousePosition.y > Screen.height - 2 * (Screen.height - panel.position.y))
+            return;
+
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 1000, LayerMask.GetMask("Grid")))
+        if (Physics.Raycast(ray, out hit, 1000, rayLayerMask))
         {
             Grid castedGrid = hit.collider.GetComponent<Grid>();
             if (castedGrid == null) return;
@@ -77,6 +95,13 @@ public class MapEditor : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 SelectGrid(castedGrid);
+            }
+        }
+        else
+        {
+            if (Input.GetMouseButton(0))
+            {
+                UnselectAllGrid();
             }
         }
     }
@@ -113,11 +138,26 @@ public class MapEditor : MonoBehaviour
     {
         currentSelectedGrid = grid;
         EnableDummyGrid(grid.transform.position, true);
+        ChangeUIElement();
     }
 
-    void unselectAllGrid()
+    void UnselectAllGrid()
     {
         currentSelectedGrid = null;
         DisableDummyGrid(true);
+    }
+
+    //UI
+    void ChangeUIElement()
+    {
+        idTxt.text = currentSelectedGrid.id.ToString();
+        posTxt.text = "q: " + currentSelectedGrid.hexPos.x + " r: " + currentSelectedGrid.hexPos.y + " s: " +
+            (1 - currentSelectedGrid.hexPos.x - currentSelectedGrid.hexPos.y);
+        typeDropdown.value = (int)currentSelectedGrid.type;
+    }
+
+    public void SubmitGridChange()
+    {
+        currentSelectedGrid.type = (GridType)typeDropdown.value;
     }
 }
