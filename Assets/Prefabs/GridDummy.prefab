@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 7485618382945901494}
   - component: {fileID: 7913732113373723315}
   - component: {fileID: 1821065081}
-  m_Layer: 31
-  m_Name: HexGrid
+  m_Layer: 0
+  m_Name: GridDummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616834092372197710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.28948212, y: 0.053797722, z: -0.31977558}
+  m_LocalPosition: {x: -0.5, y: 0, z: 2.598}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 76f0bd2652afc7c41a55647a42ea2f23, type: 2}
+  - {fileID: 2100000, guid: 91ae9ae6aaf1f4046a48852b56df67bf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,12 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4763ad33ba6ebb749844e0d5b9aec132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: 76f0bd2652afc7c41a55647a42ea2f23, type: 2}
-  innerSize: 0.7
-  outerSize: 0
-  height: 0.5
+  material: {fileID: 2100000, guid: 91ae9ae6aaf1f4046a48852b56df67bf, type: 2}
+  innerSize: 1
+  outerSize: 0.7
+  height: 0.6
   isReverse: 0
   isFlatTop: 1
+  isDrawInUpdate: 0
 --- !u!64 &1821065081
 MeshCollider:
   m_ObjectHideFlags: 0

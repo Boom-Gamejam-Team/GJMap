@@ -4,6 +4,8 @@ using UnityEngine;
 
 public static class Utility
 {
+    public static int gridSize = 1;
+
     //coordinate convert
     //hex: q,r,s(q+r+s=0)
     //rect: x,y,z

@@ -17,12 +17,14 @@ public struct Face
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
+[RequireComponent(typeof(MeshCollider))]
 [ExecuteInEditMode]
 public class HexRenderer : MonoBehaviour
 {
     private Mesh m_mesh;
     private MeshFilter m_meshFilter;
     private MeshRenderer m_meshRenderer;
+    private MeshCollider m_meshCollider;
 
     private List<Face> m_faces;
 
@@ -30,10 +32,12 @@ public class HexRenderer : MonoBehaviour
     public float innerSize, outerSize, height;
     public bool isReverse = false;
     public bool isFlatTop = true;
+    public bool isDrawInUpdate = false;
     private void Awake()
     {
         m_meshFilter = GetComponent<MeshFilter>();
         m_meshRenderer = GetComponent<MeshRenderer>();
+        m_meshCollider = GetComponent<MeshCollider>();
         m_mesh = new Mesh();
         m_mesh.name = "Hex";
         m_meshFilter.mesh = m_mesh;
@@ -57,7 +61,7 @@ public class HexRenderer : MonoBehaviour
 
     private void Update()
     {
-        DrawMesh();
+        if (isDrawInUpdate) DrawMesh();
     }
 
     void DrawMesh()
@@ -137,6 +141,7 @@ public class HexRenderer : MonoBehaviour
         m_mesh.triangles = tris.ToArray();
         m_mesh.uv = uvs.ToArray();
         m_mesh.RecalculateNormals();
+        m_meshCollider.sharedMesh = m_mesh;
     }
 
 }
