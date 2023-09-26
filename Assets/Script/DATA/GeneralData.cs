@@ -21,7 +21,7 @@ public class GeneralData :MonoBehaviour
     {
 
     }
-
+    
 
 }
 //数据存储
@@ -37,4 +37,12 @@ public class Data
     public bool isMove = false;//玩家是否可以移动
     public Vector3 targetPos;//记录玩家将要移动的位置信息
     //具体角色数据
+
+
+
+    //获取目标位置
+    public void GetPos(Vector3 tarPos)
+    {
+        this.targetPos = tarPos;
+    }
 }

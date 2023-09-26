@@ -54,9 +54,11 @@ public class Player_dir : MonoBehaviour
     //½ÇÉ«³¯Ïò
     void LookAtTarget(Vector3 tarPos)
     {
-        GeneralData.instance.generalData.targetPos = tarPos;
-        GeneralData.instance.generalData.targetPos = new Vector3(tarPos.x,transform.position.y,tarPos.z);
+        //GeneralData.instance.generalData.targetPos = tarPos;
+        //GeneralData.instance.generalData.targetPos = new Vector3(tarPos.x,transform.position.y,tarPos.z);
+        GeneralData.instance.generalData.GetPos(new Vector3(tarPos.x, transform.position.y, tarPos.z));
         this.transform.LookAt(GeneralData.instance.generalData.targetPos);
+        Debug.Log("dir"+GeneralData.instance.generalData.targetPos);
     }
 
 
