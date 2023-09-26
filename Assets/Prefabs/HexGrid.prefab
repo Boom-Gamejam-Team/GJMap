@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1821065081}
   m_Layer: 31
   m_Name: HexGrid
-  m_TagString: Untagged
+  m_TagString: Grid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 76f0bd2652afc7c41a55647a42ea2f23, type: 2}
-  innerSize: 0.9
+  innerSize: 0.7
   outerSize: 0
   height: 0.5
   isReverse: 0

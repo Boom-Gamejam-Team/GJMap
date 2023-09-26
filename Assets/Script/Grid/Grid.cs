@@ -10,14 +10,10 @@ public enum GridType
 
 public class Grid : MonoBehaviour
 {
-    //grid type
     public GridType type = GridType.EMPTY;
-    //grid pos (use q-r coordinate)
-    public Vector2 hexPos { get; private set; }
-    //a list which contains all the neighboring grids
-    public List<Grid> neighborGrids { get; private set; }
-    //specified grid id
-    public int id { get; private set; }
+    public Vector2 hexPos;
+    public List<Grid> neighborGrids;
+    public int id;
 
     private void Awake()
     {

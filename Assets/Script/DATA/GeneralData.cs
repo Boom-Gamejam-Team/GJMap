@@ -3,19 +3,31 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class GeneralData 
+[System.Serializable]
+public class GeneralData :MonoBehaviour
 {
     //单例模式
-    public static GeneralData generalData;
-
+    public static GeneralData instance;
     private void Awake()
     {
-        if(generalData==null)
-        {
-            generalData = this;
-        }
+        instance = this;
+    }
+    public Data generalData = new Data();
+    private void Start()
+    {
+
+    }
+    private void Update()
+    {
+
     }
 
+
+}
+//数据存储
+public class Data
+{
+    
     //数据存储
     public float tValue;//暴虐值
     public List<Card> cards;//卡组
