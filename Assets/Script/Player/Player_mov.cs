@@ -9,6 +9,7 @@ public class Player_mov : MonoBehaviour
     void Start()
     {
         playerCol= GetComponent<BoxCollider>();
+        GeneralData.instance.generalData.targetPos = new Vector3(transform.position.x, (float)0.8,transform.position.z);
     }
 
     // Update is called once per frame
@@ -19,7 +20,7 @@ public class Player_mov : MonoBehaviour
         if (distance > 0.1f)
         {
             Move(GeneralData.instance.generalData.targetPos,speed);
-            Debug.Log(GeneralData.instance.generalData.targetPos);
+            //Debug.Log("mov"+GeneralData.instance.generalData.targetPos);
         }
         
         

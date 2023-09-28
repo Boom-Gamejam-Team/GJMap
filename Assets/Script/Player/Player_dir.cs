@@ -16,7 +16,7 @@ public class Player_dir : MonoBehaviour
             //获取鼠标位置
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitPos;
-            bool isHit = Physics.Raycast(ray, out hitPos ,10,LayerMask.GetMask("Grid"));
+            bool isHit = Physics.Raycast(ray, out hitPos ,1000,LayerMask.GetMask("Grid"));
 
             if(isHit && hitPos.collider.tag == "Grid")//写地块的基属性
             {
@@ -38,15 +38,15 @@ public class Player_dir : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitPos;
-        bool isHit = Physics.Raycast(ray, out hitPos,10, LayerMask.GetMask("Grid"));
+        bool isHit = Physics.Raycast(ray, out hitPos,1000, LayerMask.GetMask("Grid"));
         if (isHit && hitPos.collider.tag == "Grid")
         {
             Grid gridToChoose = hitPos.collider.GetComponent<Grid>();
             if(gridToChoose != null && Input.GetMouseButtonDown(0))
             {
-                Debug.Log(gridToChoose.transform.position);
+                //Debug.Log(gridToChoose.transform.position);
                 hitPos.transform.position = gridToChoose.transform.position;
-                Debug.Log(hitPos.transform.position);
+                //Debug.Log(hitPos.transform.position);
                 LookAtTarget(hitPos.point);
             }
         }
