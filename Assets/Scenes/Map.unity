@@ -124,6 +124,7 @@ NavMeshSettings:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &191268303
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,6 +430,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840980283}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> parent of 599af7e (Added a simple map editor UI)
 =======
 >>>>>>> parent of 599af7e (Added a simple map editor UI)
 --- !u!1 &882884674
