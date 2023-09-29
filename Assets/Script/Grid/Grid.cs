@@ -40,6 +40,7 @@ public class Grid : MonoBehaviour
 
     private void Update()
     {
+
     }
 
     public void DetectNeighbor()
@@ -61,5 +62,10 @@ public class Grid : MonoBehaviour
                 }
             }
         }
+    }
+
+    public virtual void OnEnter()
+    {
+
     }
 }

@@ -19,5 +19,7 @@ public static class Utility
         Vector3 rBase = new Vector3(-0.5f, h, -0.866f);
         Vector3 convertedPos = hexSize * (q * qBase + r * rBase + s * sBase) + origin;
         return convertedPos;
+        //generate a function which adds two values
+
     }
 }
