@@ -103,7 +103,6 @@ MonoBehaviour:
   height: 0.5
   isReverse: 0
   isFlatTop: 1
-  isDrawInUpdate: 0
 --- !u!64 &1821065081
 MeshCollider:
   m_ObjectHideFlags: 0
