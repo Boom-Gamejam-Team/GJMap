@@ -9,7 +9,7 @@ public class Item : ScriptableObject
     public string itemName;
     public Sprite itemImage;
     public int itemCount;
-    public float baseValue;
+    public int itemBaseValue;
     [TextArea] public string itemDescription;
 
 

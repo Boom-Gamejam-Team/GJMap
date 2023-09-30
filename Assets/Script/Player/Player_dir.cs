@@ -16,19 +16,19 @@ public class Player_dir : MonoBehaviour
             //获取鼠标位置
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitPos;
-            bool isHit = Physics.Raycast(ray, out hitPos ,1000,LayerMask.GetMask("Grid"));
+            bool isHit = Physics.Raycast(ray, out hitPos, 1000, LayerMask.GetMask("Grid"));
 
-            if(isHit && hitPos.collider.tag == "Grid")//写地块的基属性
+            if (isHit && hitPos.collider.tag == "Grid")//写地块的基属性
             {
-                isMove= true;
+                isMove = true;
             }
             else
             {
-                isMove= false;
+                isMove = false;
             }
         }
 
-        if(isMove)
+        if (isMove)
         {
             PlayerToTarget();
         }
@@ -38,11 +38,11 @@ public class Player_dir : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitPos;
-        bool isHit = Physics.Raycast(ray, out hitPos,1000, LayerMask.GetMask("Grid"));
+        bool isHit = Physics.Raycast(ray, out hitPos, 1000, LayerMask.GetMask("Grid"));
         if (isHit && hitPos.collider.tag == "Grid")
         {
             Grid gridToChoose = hitPos.collider.GetComponent<Grid>();
-            if(gridToChoose != null && Input.GetMouseButtonDown(0))
+            if (gridToChoose != null && Input.GetMouseButtonDown(0))
             {
                 //Debug.Log(gridToChoose.transform.position);
                 hitPos.transform.position = gridToChoose.transform.position;
@@ -58,7 +58,7 @@ public class Player_dir : MonoBehaviour
         //GeneralData.instance.generalData.targetPos = new Vector3(tarPos.x,transform.position.y,tarPos.z);
         GeneralData.instance.generalData.GetPos(new Vector3(tarPos.x, transform.position.y, tarPos.z));
         this.transform.LookAt(GeneralData.instance.generalData.targetPos);
-        Debug.Log("dir"+GeneralData.instance.generalData.targetPos);
+        //Debug.Log("dir"+GeneralData.instance.generalData.targetPos);
     }
 
 
