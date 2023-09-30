@@ -7,12 +7,13 @@ public class Player_mov : MonoBehaviour
     public float speed = 1;
     public GameObject myBag;
 
-    bool isOpen;//背包打开与否
+    bool isOpen = false;//背包打开与否
 
     private BoxCollider playerCol;
     void Start()
     {
         myBag = GameObject.Find("Bag");
+        myBag.SetActive(isOpen);
         playerCol= GetComponent<BoxCollider>();
         GeneralData.instance.generalData.targetPos = new Vector3(transform.position.x, (float)0.8,transform.position.z);
     }
