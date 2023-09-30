@@ -7,9 +7,10 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     public string itemName;
-    public int id;
     public Sprite itemImage;
     public int itemCount;
+    public float baseValue;
     [TextArea] public string itemDescription;
+
 
 }
