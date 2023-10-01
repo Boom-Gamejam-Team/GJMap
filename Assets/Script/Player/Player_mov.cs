@@ -6,6 +6,7 @@ public class Player_mov : MonoBehaviour
 {
     public float speed = 1;
     public GameObject myBag;
+    public float maxDis;
 
     bool isOpen = false;//背包打开与否
 
@@ -23,7 +24,7 @@ public class Player_mov : MonoBehaviour
     {
         //计算目标与现在距离差值
         float distance = Vector3.Distance(GeneralData.instance.generalData.targetPos,transform.position);
-        if (distance > 0.1f)
+        if (distance > 0.1f && distance<maxDis)
         {
             Move(GeneralData.instance.generalData.targetPos,speed);
             //Debug.Log("mov"+GeneralData.instance.generalData.targetPos);
@@ -35,6 +36,7 @@ public class Player_mov : MonoBehaviour
     void Move(Vector3 tarPos,float speed)
     {
         this.transform.position = Vector3.MoveTowards(transform.position,tarPos,speed*Time.deltaTime);
+        GeneralData.instance.generalData.isMove = false;
     }
     void OpenBag()
     {
