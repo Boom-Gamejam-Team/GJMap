@@ -358,6 +358,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 521301600}
   m_CullTransparentMesh: 1
+--- !u!1 &545818118 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 932128236, guid: 85d539bcca1a6784d98556db6a2d7ea8, type: 3}
+  m_PrefabInstance: {fileID: 3380451421176790912}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &882884674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,7 +1738,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3380451421176790918, guid: 85d539bcca1a6784d98556db6a2d7ea8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 85d539bcca1a6784d98556db6a2d7ea8, type: 3}
 --- !u!114 &3380451421176790913 stripped
 MonoBehaviour:
@@ -1768,17 +1774,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3380451421176790918 stripped
+--- !u!114 &3380451421176790927
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3380451421176790918, guid: 85d539bcca1a6784d98556db6a2d7ea8, type: 3}
-  m_PrefabInstance: {fileID: 3380451421176790912}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 545818118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eab2818153d19394c9140c61b739b7bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 232f359e0988d55499dce5632d11b1d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemIconPrefab: {fileID: 3328243809450121233, guid: 1c9d8b49c9433fb4fbcf05f7f04667a4, type: 3}
 --- !u!1001 &3650999086959545264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1854,7 +1862,7 @@ PrefabInstance:
     - target: {fileID: 5081187382891773011, guid: 55120b4575754214c82932c736b3acd8, type: 3}
       propertyPath: itemGrid
       value: 
-      objectReference: {fileID: 3380451421176790918}
+      objectReference: {fileID: 3380451421176790927}
     - target: {fileID: 5081187382891773011, guid: 55120b4575754214c82932c736b3acd8, type: 3}
       propertyPath: nameText
       value: 
