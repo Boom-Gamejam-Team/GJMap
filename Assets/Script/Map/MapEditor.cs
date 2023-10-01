@@ -160,4 +160,10 @@ public class MapEditor : MonoBehaviour
     {
         currentSelectedGrid.type = (GridType)typeDropdown.value;
     }
+    public void DeleteGrid()
+    {
+        Destroy(currentSelectedGrid.gameObject);
+        gridList.Remove(currentSelectedGrid);
+        UnselectAllGrid();
+    }
 }
