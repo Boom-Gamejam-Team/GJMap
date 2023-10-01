@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGrid : MonoBehaviour
+public class EnemyGrid : Grid
 {
-    // Start is called before the first frame update
-    void Start()
+    public EnemyGrid(GridType _type, Vector2 _hexPos, int _id) : base(_type, _hexPos, _id)
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

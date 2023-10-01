@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum GridType
 {
-    EMPTY, OBSTACLE, ENEMY, SHOP
+    EMPTY, OBSTACLE, ENEMY, SHOP, EVENT, MONEY
 }
 
 
