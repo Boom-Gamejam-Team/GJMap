@@ -24,7 +24,7 @@ public class Player_mov : MonoBehaviour
     {
         //计算目标与现在距离差值
         float distance = Vector3.Distance(GeneralData.instance.generalData.targetPos,transform.position);
-        if (distance > 0.1f && distance<maxDis)
+        if (distance > 0.01f && distance<maxDis)
         {
             Move(GeneralData.instance.generalData.targetPos,speed);
             //Debug.Log("mov"+GeneralData.instance.generalData.targetPos);
