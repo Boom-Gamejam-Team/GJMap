@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class GridUI : MonoBehaviour
 {
     public GameObject itemIconPrefab;
-    public void AddNewItemIcon(Item item)
+    public void AddNewItemIcon(Item item, int _id)
     {
         GameObject itemIcon = Instantiate(itemIconPrefab);
         itemIcon.transform.SetParent(transform);
-        itemIcon.GetComponent<ItemIcon>().SetIcon(item);
+        itemIcon.GetComponent<ItemTradeIcon>().SetIcon(item, _id);
     }
 }

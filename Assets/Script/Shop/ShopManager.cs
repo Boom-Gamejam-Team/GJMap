@@ -27,7 +27,9 @@ public class ShopManager : Singleton<ShopManager>
     public Text nameText;
     public Text valueText;
     public Text descriptionText;
+    public Text playerMoneyText;
 
+    [HideInInspector]
     public Item currentChoosenItem;
     private int currentChoosenItemValue;
     private List<TradeInf> currentTradeList;
@@ -39,15 +41,15 @@ public class ShopManager : Singleton<ShopManager>
         {
             shopUI.SetActive(true);
         }
-        else
-        {
-            ResetShop();
-        }
+        ResetShop();
+        int i = 0;
         //Add item icons to the grid of the shop UI
         foreach (var tradeInf in tradeList)
         {
-            itemGrid.AddNewItemIcon(tradeInf.item);
+            itemGrid.AddNewItemIcon(tradeInf.item, i);
+            i++;
         }
+        UpdateShop();
     }
     public void ResetShop()
     {
@@ -57,11 +59,12 @@ public class ShopManager : Singleton<ShopManager>
         }
     }
 
-    public void ChooseItem(Item item)
+    public void ChooseTrade(ItemTradeIcon icon)
     {
+        Item item = currentTradeList[icon.id].item;
         currentChoosenItem = item;
         nameText.text = item.itemName;
-        currentChoosenItemValue = item.itemBaseValue + currentTradeList.Find(x => x.item == item).priceOffset;
+        currentChoosenItemValue = item.itemBaseValue + currentTradeList[icon.id].priceOffset;
         valueText.text = currentChoosenItemValue.ToString();
         descriptionText.text = item.itemDescription;
     }
@@ -81,9 +84,14 @@ public class ShopManager : Singleton<ShopManager>
         else
         {
             GeneralData.instance.generalData.playerMoney -= currentChoosenItemValue;
+            UpdateShop();
             // GeneralData.instance.generalData.bagList.Add(currentChoosenItem);
             Debug.Log("Bought item: " + currentChoosenItem.itemName);
         }
     }
 
+    private void UpdateShop()
+    {
+        playerMoneyText.text = GeneralData.instance.generalData.playerMoney.ToString();
+    }
 }
