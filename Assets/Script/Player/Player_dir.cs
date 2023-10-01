@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player_dir : MonoBehaviour
 {
     public bool isMove;
+
+    Vector3 origin= Vector3.zero;
     private void Start()
     {
         isMove = GeneralData.instance.generalData.isMove;
@@ -44,18 +46,21 @@ public class Player_dir : MonoBehaviour
             Grid gridToChoose = hitPos.collider.GetComponent<Grid>();
             if (gridToChoose != null && Input.GetMouseButtonDown(0))
             {
+                //获取地块中心位置
+                Vector3 mapPos = Utility.HexCoordToRectCoord(gridToChoose.hexPos, origin);
                 //Debug.Log(gridToChoose.transform.position);
-                hitPos.transform.position = gridToChoose.transform.position;
+                hitPos.transform.position = mapPos;
                 //Debug.Log(hitPos.transform.position);
                 LookAtTarget(hitPos.point);
+
+                GeneralData.instance.generalData.targetPos= new Vector3(mapPos.x,this.transform.position.y,mapPos.z);
             }
         }
     }
     //角色朝向
     void LookAtTarget(Vector3 tarPos)
     {
-        //GeneralData.instance.generalData.targetPos = tarPos;
-        //GeneralData.instance.generalData.targetPos = new Vector3(tarPos.x,transform.position.y,tarPos.z);
+        
         GeneralData.instance.generalData.GetPos(new Vector3(tarPos.x, transform.position.y, tarPos.z));
         this.transform.LookAt(GeneralData.instance.generalData.targetPos);
         //Debug.Log("dir"+GeneralData.instance.generalData.targetPos);
