@@ -7,5 +7,10 @@ public class ItemBag : MonoBehaviour
 {
     public Item item;
     public Image image;
-    public Text info;
+    public Text itemNum;
+
+    public void ItemInfo()
+    {
+        BagManager.UpdateInfo(item.itemDescription);
+    }
 }
