@@ -11,6 +11,6 @@ public class Item : ScriptableObject
     public int itemCount;
     public int itemBaseValue;
     [TextArea] public string itemDescription;
-
+    public GameObject itemContainer;
 
 }

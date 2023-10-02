@@ -696,7 +696,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595da3720f7070c439eac95e37712ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPools: []
+  cardPools:
+  - prefab: {fileID: 4639339052546044392, guid: 97e877927bb29614aa7cf05fe88a7ed3, type: 3}
+    cardSize: 10
 --- !u!4 &1122898323
 Transform:
   m_ObjectHideFlags: 0

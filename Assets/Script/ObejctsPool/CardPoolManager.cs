@@ -11,6 +11,7 @@ public class CardPoolManager:MonoBehaviour
 
     private void Start()
     {
+        dictionary = new Dictionary<GameObject,Pool>();
         Initialize(cardPools);
     }
     void Initialize(Pool[] pools)
@@ -27,7 +28,7 @@ public class CardPoolManager:MonoBehaviour
             dictionary.Add(pool.Prefab, pool);
 
             //将子类对象放置父类管理
-            Transform cardPoolsParent = new GameObject(pool.Prefab.name).transform;
+            Transform cardPoolsParent = new GameObject("Pool"+pool.Prefab.name).transform;
             cardPoolsParent.parent = transform;
 
             pool.Initialize(cardPoolsParent);
