@@ -5,20 +5,37 @@ using UnityEngine;
 
 public class Dice
 {
-    public int point;
+    public static int point=0;
     public static int maxPoint;
-    public static void Init()
+    public static int demonUse;
+    public bool diceUse=true;
+    public static void DiceInit()//初始化骰子上限
     {
         maxPoint = 6;
     }
-    public static void Upgrade()
+    public static void Upgrade()//增加骰子上限
     {
         maxPoint += 2;
     }
-    public int Throw()
+    public void Throw()//普通骰子投掷
     {
-        point =(int)UnityEngine.Random.Range(1,maxPoint+1);
+        if (Data.isThrow&&diceUse)
+        {
+            diceUse = false;
+            point += Random.Range(1,maxPoint+1);
+        }
+    }
+    public void DemonThrow()//恶魔骰子投掷
+    {
+        if (Data.isThrow && !diceUse)
+        {
+            point += Random.Range(1, 7);
+        }
+    }
+    public int EndThrow()
+    {
+        Data.isThrow = false;
+        diceUse = true;
         return point;
     }
-
 }

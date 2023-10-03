@@ -28,6 +28,7 @@ public class Data
     public int pHAccount = 3;//玩家生命数
     public int playerMoney;//玩家金钱
     public bool isMove = false;//玩家是否可以移动
+    public static bool isThrow = true;
     public Vector3 targetPos;//记录玩家将要移动的位置信息
     //具体角色数据
 
