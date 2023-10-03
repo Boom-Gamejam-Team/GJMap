@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -11,12 +12,12 @@ public class ShopGrid : Grid
     {
 
     }
+
     public override void OnEnter()
     {
-
+        base.OnEnter();
+        if (tradeList.Count > 0)
+            ShopManager.Instance.ShowShop(tradeList);
     }
-    private void ShowShopUI()
-    {
 
-    }
 }

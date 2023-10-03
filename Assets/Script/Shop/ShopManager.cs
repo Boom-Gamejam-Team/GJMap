@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+[Serializable]
 public class TradeInf
 {
     public Item item;
     public int priceOffset;
-    public int amount;
+    public int amount = 1;
 
     public TradeInf(Item _item)
     {
@@ -71,6 +73,7 @@ public class ShopManager : Singleton<ShopManager>
 
     public void BuyItem()
     {
+
         if (currentChoosenItem == null)
         {
             Debug.Log("No item is choosen");
