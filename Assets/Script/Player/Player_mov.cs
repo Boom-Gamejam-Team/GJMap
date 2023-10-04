@@ -30,7 +30,13 @@ public class Player_mov : MonoBehaviour
         float distance = Vector3.Distance(GeneralData.instance.generalData.targetPos, transform.position);
 
         //状态切换
-        if ((distance < 0.01f || distance > maxDis) && GeneralData.instance.generalData.isPlayerMoving )
+        if (distance > maxDis)
+        {
+            GeneralData.instance.generalData.isPlayerMoving = false;
+            GeneralData.instance.generalData.moveTargetGrid = null;
+        }
+
+        if (distance < 0.01f && GeneralData.instance.generalData.isPlayerMoving)
         {
             GeneralData.instance.generalData.isPlayerMoving = false;
             //dice.diceUse = false;
@@ -41,7 +47,7 @@ public class Player_mov : MonoBehaviour
         }
 
         //行动状态机实现
-        if (GeneralData.instance.generalData.isPlayerMoving )
+        if (GeneralData.instance.generalData.isPlayerMoving)
             Move(GeneralData.instance.generalData.targetPos, speed);
 
         //打开背包

@@ -102,7 +102,7 @@ public class Grid : MonoBehaviour
 
     public virtual void OnEnter()
     {
-        Debug.Log("Entered grid type " + type);
+        //Debug.Log("Entered grid type " + type);
     }
 
 }
