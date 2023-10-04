@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-
-public class Dice
+public class Dice:MonoBehaviour
 {
     public static int point=0;
-    public static int maxPoint;
+    public static int maxPoint=6;
     public static int demonUse;
     public bool diceUse=true;
-    public static void DiceInit()//初始化骰子上限
+    public Text pointTxt;//Debug
+    public static void DiceInit()//初始化骰子
     {
-        maxPoint = 6;
+        point = 0;
     }
     public static void Upgrade()//增加骰子上限
     {
@@ -32,10 +33,24 @@ public class Dice
             point += Random.Range(1, 7);
         }
     }
-    public int EndThrow()
+    public void EndThrow()//完成投掷
     {
         Data.isThrow = false;
         diceUse = true;
-        return point;
+    }
+    public int GetPoint()//获得值
+    {
+        if (!Data.isThrow)
+        {
+            return point;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    private void Update()//Debug
+    {
+        pointTxt.text = GetPoint().ToString();
     }
 }
