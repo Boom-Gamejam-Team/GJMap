@@ -90,7 +90,7 @@ public class CamControl : MonoBehaviour
         {
             float m_distance = Input.GetAxis("Mouse ScrollWheel") * m_sSpeed;
             Vector3 newPos = camTrans.localPosition + camTrans.forward * m_distance;
-            Debug.Log(newPos.magnitude);
+            //Debug.Log(newPos.magnitude);
             if (newPos.magnitude >= m_maxDistance) return;
             camTrans.localPosition = newPos;
         }

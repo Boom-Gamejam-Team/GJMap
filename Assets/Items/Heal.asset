@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Heal Medicine
   itemImage: {fileID: 21300000, guid: 60050e8bc512e6149b10580917dad410, type: 3}
-  itemCount: 0
-  baseValue: 10
+  itemCount: 1
+  itemBaseValue: 3
   itemDescription: A medicine which can slightly heal your hp.
+  itemContainer: {fileID: 0}

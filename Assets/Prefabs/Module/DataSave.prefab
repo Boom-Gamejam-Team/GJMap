@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6841487877885655457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6841487877885655458}
+  - component: {fileID: 6841487877885655459}
+  m_Layer: 0
+  m_Name: DataSave
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6841487877885655458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6841487877885655457}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6841487877885655459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6841487877885655457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1b8484ae544ad48918b42d542ee592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generalData:
+    tValue: 0
+    cards: []
+    terType: 
+    playerHealth: 0
+    pHAccount: 3
+    playerMoney: 0
+    isMove: 0
+    targetPos: {x: 0, y: 0, z: 0}
+  gridObjList:
+  - {fileID: 616834092372197710, guid: 24039b16e8b0e2c4b9fa714c0571653a, type: 3}
+  - {fileID: 376643641409895148, guid: 6a08f0fb8754fe14ab7cf85fd0ac2976, type: 3}
+  - {fileID: 3321742908212654770, guid: a3ec8a75df9e05949a3bf780e43b67ef, type: 3}
+  - {fileID: 1314032770540964760, guid: 8e13459bc818ef143aeb0c15859ff255, type: 3}
+  - {fileID: 4259798950976133412, guid: 14f33c4150c19984eb040284ee2fd4cd, type: 3}
+  - {fileID: 1792753048897162340, guid: a9faee775ab69024b888d3233149e2be, type: 3}

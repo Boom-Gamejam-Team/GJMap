@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[System.Serializable]
+
 public class GeneralData : MonoBehaviour
 {
     //单例模式
@@ -14,9 +14,19 @@ public class GeneralData : MonoBehaviour
     }
     public Data generalData = new Data();
 
+    //Grid consts
+    //grid obj reference list
+    //index 0: empty grid
+    //index 1: obstacle grid
+    //index 2: enemy grid
+    //index 3: shop grid
+    //index 4: event grid
+    //index 5: money grid
+    public List<GameObject> gridObjList;
 
 }
 //数据存储
+[System.Serializable]
 public class Data
 {
 
@@ -28,6 +38,8 @@ public class Data
     public int pHAccount = 3;//玩家生命数
     public int playerMoney;//玩家金钱
     public bool isMove = false;//玩家是否可以移动
+    public bool isPlayerMoving = false;//移动状态机变量
+    public Grid moveTargetGrid;//玩家将要移动到的格子
     public static bool isThrow = true;
     public Vector3 targetPos;//记录玩家将要移动的位置信息
     //具体角色数据
@@ -39,4 +51,6 @@ public class Data
     {
         this.targetPos = tarPos;
     }
+
+
 }

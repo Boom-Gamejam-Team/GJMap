@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class MapEditor : MonoBehaviour
+public class MapEditor : Singleton<MapEditor>
 {
 
     [Header("Grid prefabs")]
@@ -14,6 +15,7 @@ public class MapEditor : MonoBehaviour
 
     [Header("Editor options")]
     public bool isEditorEnabled;
+    public bool isGenerateGridGroup;
     public int gridGroupSize = 3;
     public LayerMask rayLayerMask;
 
@@ -30,8 +32,9 @@ public class MapEditor : MonoBehaviour
     private Grid currentSelectedGrid;
     private GameObject gridDummyObjInstance;
     private GameObject gridDummySelectedObjInstance;
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
         gridDummyObjInstance = Instantiate(gridDummyObj);
         gridDummyObjInstance.SetActive(false);
         gridDummySelectedObjInstance = Instantiate(gridDummySelectedObj);
@@ -40,7 +43,8 @@ public class MapEditor : MonoBehaviour
 
     private void Start()
     {
-        GenerateRegularGridGroup(Vector3.zero, gridGroupSize);
+        if (isGenerateGridGroup)
+            GenerateRegularGridGroup(Vector3.zero, gridGroupSize);
     }
 
     private void Update()
@@ -48,6 +52,10 @@ public class MapEditor : MonoBehaviour
         if (isEditorEnabled)
         {
             GridSelection();
+            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.X))
+            {
+                DeleteGrid();
+            }
         }
     }
 
@@ -80,14 +88,14 @@ public class MapEditor : MonoBehaviour
 
     void GridSelection()
     {
-        if (Input.mousePosition.x > Screen.width - 2 * (Screen.width - panel.position.x) &&
-            Input.mousePosition.y > Screen.height - 2 * (Screen.height - panel.position.y))
-            return;
+        // if (Input.mousePosition.x > Screen.width - 2 * (Screen.width - panel.position.x) &&
+        //     Input.mousePosition.y > Screen.height - 2 * (Screen.height - panel.position.y))
+        //     return;
 
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 1000, rayLayerMask))
+        if (Physics.Raycast(ray, out hit, 1000, rayLayerMask) && !EventSystem.current.IsPointerOverGameObject())
         {
             Grid castedGrid = hit.collider.GetComponent<Grid>();
             if (castedGrid == null) return;
@@ -158,10 +166,30 @@ public class MapEditor : MonoBehaviour
 
     public void SubmitGridChange()
     {
-        currentSelectedGrid.type = (GridType)typeDropdown.value;
+        if (currentSelectedGrid == null)
+        {
+            Debug.Log("No grid selected");
+            return;
+        }
+        currentSelectedGrid.ChangeGridType((GridType)typeDropdown.value);
+
     }
     public void DeleteGrid()
     {
+        if (currentSelectedGrid == null)
+        {
+            Debug.Log("No grid selected");
+            return;
+        }
+        List<Grid> currentNeighborGrids = new List<Grid>();
+        foreach (var i in currentSelectedGrid.neighborGrids)
+        {
+            currentNeighborGrids.Add(i);
+        }
+        foreach (var i in currentNeighborGrids)
+        {
+            i.neighborGrids.Remove(currentSelectedGrid);
+        }
         Destroy(currentSelectedGrid.gameObject);
         gridList.Remove(currentSelectedGrid);
         UnselectAllGrid();

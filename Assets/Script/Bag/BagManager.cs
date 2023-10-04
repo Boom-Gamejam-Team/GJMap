@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class BagManager : MonoBehaviour
 {
-    static BagManager instance;
+    public static BagManager instance;
     private void Awake()
     {
         if(instance!=null) 
@@ -23,6 +23,7 @@ public class BagManager : MonoBehaviour
     public ItemBag itemBagPrefab;//Prefab里的
     public GameObject itemGrid;
     public Text itemInfo;
+    public Text playerMoney;
 
     //添加物品描述
     public static void UpdateInfo(string info)

@@ -11,15 +11,17 @@ public enum GridType
 public class Grid : MonoBehaviour
 {
     //grid type
+    [HideInInspector]
     public GridType type = GridType.EMPTY;
     //grid pos (use q-r coordinate)
-    public Vector2 hexPos { get; private set; }
-    //a list which contains all the neighboring grids
-    public List<Grid> neighborGrids { get; private set; }
+    public Vector2 hexPos;
     //specified grid id
-    public int id { get; private set; }
+    public int id;
+    //a list which contains all the neighboring grids
+    public List<Grid> neighborGrids;
 
-    private void Awake()
+
+    protected virtual void Awake()
     {
         neighborGrids = new();
     }
@@ -64,8 +66,43 @@ public class Grid : MonoBehaviour
         }
     }
 
+    public void ChangeGridType(GridType _type)
+    {
+        if (_type == type) return;
+        //instantiate new grid
+        GameObject newGridObj = Instantiate(GeneralData.instance.gridObjList[(int)_type], transform.position, transform.rotation);
+        newGridObj.transform.parent = MapEditor.Instance.gridParent;
+        Grid newGrid = _type switch
+        {
+            GridType.EMPTY => newGridObj.AddComponent<Grid>(),
+            GridType.OBSTACLE => newGridObj.AddComponent<ObstacleGrid>(),
+            GridType.ENEMY => newGridObj.AddComponent<EnemyGrid>(),
+            GridType.SHOP => newGridObj.AddComponent<ShopGrid>(),
+            GridType.EVENT => newGridObj.AddComponent<EventGrid>(),
+            GridType.MONEY => newGridObj.AddComponent<MoneyGrid>(),
+            _ => newGridObj.AddComponent<Grid>(),
+        };
+        //hard copy grid data
+        newGrid.SetAttributes(_type, hexPos, id);
+        foreach (var i in newGrid.neighborGrids)
+        {
+            newGrid.neighborGrids.Add(i);
+        }
+
+        //update neighboring grid data
+        foreach (var i in neighborGrids)
+        {
+            i.neighborGrids.Remove(this);
+            i.neighborGrids.Add(newGrid);
+        }
+
+        //destroy old grid
+        Destroy(gameObject);
+    }
+
     public virtual void OnEnter()
     {
-
+        Debug.Log("Entered grid type " + type);
     }
+
 }
