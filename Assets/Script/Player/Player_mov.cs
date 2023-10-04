@@ -7,6 +7,7 @@ public class Player_mov : MonoBehaviour
     public float speed = 1;
     public GameObject myBag;
     public float maxDis;
+    public Dice dice = new Dice();
 
 
 
@@ -29,9 +30,10 @@ public class Player_mov : MonoBehaviour
         float distance = Vector3.Distance(GeneralData.instance.generalData.targetPos, transform.position);
 
         //状态切换
-        if ((distance < 0.01f || distance > maxDis) && GeneralData.instance.generalData.isPlayerMoving)
+        if ((distance < 0.01f || distance > maxDis) && GeneralData.instance.generalData.isPlayerMoving )
         {
             GeneralData.instance.generalData.isPlayerMoving = false;
+            //dice.diceUse = false;
             if (GeneralData.instance.generalData.moveTargetGrid != null)
             {
                 GeneralData.instance.generalData.moveTargetGrid.OnEnter();
@@ -39,11 +41,13 @@ public class Player_mov : MonoBehaviour
         }
 
         //行动状态机实现
-        if (GeneralData.instance.generalData.isPlayerMoving)
+        if (GeneralData.instance.generalData.isPlayerMoving )
             Move(GeneralData.instance.generalData.targetPos, speed);
 
         //打开背包
         OpenBag();
+
+        BagManager.instance.playerMoney.text = "Money:" + GeneralData.instance.generalData.playerMoney.ToString();
     }
     void Move(Vector3 tarPos, float speed)
     {

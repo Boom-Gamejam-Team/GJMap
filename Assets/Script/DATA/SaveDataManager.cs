@@ -7,12 +7,14 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SaveDataManager : MonoBehaviour
 {
     public Inventory myBag;
+    public GameObject player;
     public void SaveData()
     {
         if (!Directory.Exists(Application.persistentDataPath + "/game_saveData"))
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/game_saveData");
         }
+        
 
         //数据二进制转化
         BinaryFormatter formatter = new BinaryFormatter();
