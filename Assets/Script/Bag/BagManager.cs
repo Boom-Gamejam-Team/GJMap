@@ -21,6 +21,8 @@ public class BagManager : MonoBehaviour
 
     public Inventory myBag;//BagMaterial里的
     public ItemBag itemBagPrefab;//Prefab里的
+    public CardItemsUI cardItems;
+    public GameObject cardPosPoint;
     public GameObject itemGrid;
     public Text itemInfo;
     public Text playerMoney;
@@ -38,6 +40,16 @@ public class BagManager : MonoBehaviour
         bag.image.sprite = item.itemImage;
         bag.itemNum.text = item.itemCount.ToString();
     }
+    //重载方法
+    //往卡组背包里加东西
+    public static void CreatNewItem(CardItem cardItem)
+    {
+        CardItemsUI cardUI = Instantiate(instance.cardItems,instance.cardPosPoint.transform);
+        cardUI.cardItem = cardItem;
+        cardUI.cardImage.sprite = cardItem.itemImage;
+        cardUI.cardCost = cardItem.cardCost;
+        cardUI.cardGroup = cardItem.cardGroup;
+    }
     //刷新物品个数
     public static void Refresh()
     {
@@ -48,8 +60,13 @@ public class BagManager : MonoBehaviour
         for (int i = 0; i < instance.myBag.bagList.Count; i++)
         {
             CreatNewItem(instance.myBag.bagList[i]);
+            CreatNewItem(instance.myBag.cardList[i]);
         }
     }
-    //获取背包数据
+    //生成物体
+    /*public static GameObject InstantiateObj(Item item)
+    {
+
+    }*/
     
 }

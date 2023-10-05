@@ -31,7 +31,7 @@ public class Data
 {
 
     //数据存储
-    public float tValue;//暴虐值
+    public float tValue = 100;//暴虐值
     public List<Card> cards;//卡组
     public string terType;//地形类型
     public float playerHealth;//玩家血量
@@ -51,6 +51,16 @@ public class Data
     {
         this.targetPos = tarPos;
     }
-
+    //暴虐值改变
+    //暴虐值增加
+    public void tValueIncrease(float damage)
+    {
+        tValue+= damage;
+    }
+    //暴虐值减少
+    public void tValueDecrease(float damage)
+    {
+        tValue-= damage;
+    }
 
 }

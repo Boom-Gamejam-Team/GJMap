@@ -172,8 +172,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  cardItem: {fileID: 0}
   image: {fileID: 4641258532734054691}
-  itemNum: {fileID: 0}
+  itemNum: {fileID: 1668012273623558078}
 --- !u!114 &1365819593121797557
 MonoBehaviour:
   m_ObjectHideFlags: 0

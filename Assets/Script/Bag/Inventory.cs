@@ -6,6 +6,6 @@ using UnityEngine;
 public class Inventory : ScriptableObject
 {
     public List<Item> bagList= new List<Item>();
-
+    public List<CardItem> cardList= new List<CardItem>();
     
 }

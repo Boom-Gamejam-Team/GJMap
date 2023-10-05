@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23247faefa5e3f24f8f0c1442e7095fb, type: 3}
-  m_Name: myBag
+  m_Script: {fileID: 11500000, guid: a3d858f9f73704f4ba5ed4f06e9038cc, type: 3}
+  m_Name: BagMaterial 1
   m_EditorClassIdentifier: 
-  bagList: []
-  cardList: []
+  itemName: 
+  itemCount: 3
+  itemImage: {fileID: 21300000, guid: c0e709a93e0d9ee4c97fd59d97359984, type: 3}
+  itemBaseValue: 0
+  itemDescription: 
+  itemContainer: {fileID: 0}
