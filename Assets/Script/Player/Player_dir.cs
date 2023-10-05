@@ -8,9 +8,12 @@ public class Player_dir : MonoBehaviour
     public bool isMove;
 
     Vector3 origin = Vector3.zero;
+    Level level;
     private void Start()
     {
         isMove = GeneralData.instance.generalData.isMove;
+        level = FindObjectOfType<Level>();
+        this.transform.position = new Vector3(level.spawnPos.x,transform.position.y ,level.spawnPos.y);
     }
     private void Update()
     {
